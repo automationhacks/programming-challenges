@@ -2,6 +2,7 @@ package hackerrank._01_diagonal_difference
 
 import org.testng.Assert
 import org.testng.annotations.Test
+import kotlin.math.abs
 
 /*
 Given a square matrix, calculate the absolute difference between the sums of its diagonals.
@@ -67,42 +68,44 @@ Note: |x| is the absolute value of x
  * The function accepts 2D_INTEGER_ARRAY arr as parameter.
  */
 
-fun diagonalDifference(arr: Array<Array<Int>>): Int {
-    /** Figuring out the logic
-    0 1 2
-    1 1 2
-    2 1 2
 
-    principal diagonal (0, 0), (1, 1), (2, 2)
-    secondary diagonal (0, 2), (1, 1), (2, 0)
-
-    row == column -> principal diagonal
-    row + column == no of rows - 1 -> secondary diagonal
-     */
-
-    var first = 0
-    var second = 0
-
-    val noOfRows = arr.size
-
-    for (row in 0 until noOfRows) {
-        val elem = arr[row]
-
-        for (column in 0 until elem.size) {
-            if (row == column) {
-                first += elem[column]
-            }
-
-            if (
-                (row + column) == (noOfRows - 1)) {
-                second += elem[column]
-            }
-        }
-    }
-    return Math.abs(first - second)
-}
 
 class DiagonalDifferenceTests {
+    fun diagonalDifference(arr: Array<Array<Int>>): Int {
+        /** Figuring out the logic
+        0 1 2
+        1 1 2
+        2 1 2
+
+        principal diagonal (0, 0), (1, 1), (2, 2)
+        secondary diagonal (0, 2), (1, 1), (2, 0)
+
+        row == column -> principal diagonal
+        row + column == no of rows - 1 -> secondary diagonal
+         */
+
+        var first = 0
+        var second = 0
+
+        val noOfRows = arr.size
+
+        for (row in 0 until noOfRows) {
+            val elem = arr[row]
+
+            for (column in 0 until elem.size) {
+                if (row == column) {
+                    first += elem[column]
+                }
+
+                if (
+                    (row + column) == (noOfRows - 1)) {
+                    second += elem[column]
+                }
+            }
+        }
+        return abs(first - second)
+    }
+
     @Test
     fun testDiagonalDifference() {
         val inputArr = arrayOf(
