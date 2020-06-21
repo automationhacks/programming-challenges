@@ -30,12 +30,8 @@ def compress_string(string):
             previous_char_count += 1
 
     output.append(f'{previous_char}{previous_char_count}')
-    output_str = ''.join(output)
 
-    if len(output_str) < len(string):
-        return output_str
-    else:
-        return string
+    return min(string, ''.join(output), key=len)
 
 
 def test_compress_string():
