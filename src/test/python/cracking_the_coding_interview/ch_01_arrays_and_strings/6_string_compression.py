@@ -12,7 +12,11 @@ Hints: #92, # 110
 - Be careful that you aren't repeatedly concatenating strings together. This can be very inefficient.
 """
 
+# Official solution
+# https://github.com/careercup/CtCI-6th-Edition-Python/blob/master/Chapter1/6_String%20Compression/StringCompression.py
 
+
+# O(n)
 def compress_string(string):
     previous_char = ''
     previous_char_count = 0
@@ -30,12 +34,8 @@ def compress_string(string):
             previous_char_count += 1
 
     output.append(f'{previous_char}{previous_char_count}')
-    output_str = ''.join(output)
 
-    if len(output_str) < len(string):
-        return output_str
-    else:
-        return string
+    return min(string, ''.join(output), key=len)
 
 
 def test_compress_string():
