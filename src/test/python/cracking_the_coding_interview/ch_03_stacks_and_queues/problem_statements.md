@@ -45,3 +45,12 @@ Hints: #98, #114
 Hints:
 - The major difference between a queue and a stack is the order of elements. A queue removes the oldest item and a stack removes the newest item. How could you remove the oldest item from a stack if you only had access to the newest item?
 - We can remove the oldest item from a stack by repeatedly removing the newest item (inserting those into the temporary stack) until we get down to one element. Then, after we've retrieved the newest item, putting all the elements back. The issue with this is that doing several pops in a row will require 0 (N) work each time. Can we optimize for scenarios where we might do several pops in a row?
+
+## Problem 3.5
+
+Sort Stack: Write a program to sort a stack such that the smallest items are on the top. You can use an additional temporary stack, but you may not copy the elements into any other data structure (such as an array). The stack supports the following operations: push, pop, peek, and isEmpty.
+Hints: # 75, #32, #43
+
+- Alternatively, you could pick a random depth to traverse to and then randomly traverse, stopping when you get to that depth. Think this through, though. Does this work?
+- Imagine your secondary stack is sorted. Can you insert elements into it in sorted order? You might need some extra storage. What could you use for extra storage?
+- Keep the secondary stack in sorted order, with the biggest elements on the top. Use the primary stack for additional storage.
