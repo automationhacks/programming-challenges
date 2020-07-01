@@ -11,7 +11,7 @@ Hints: #8, #25, #47, #67, # 726
 
 [Official solution](https://github.com/careercup/CtCI-6th-Edition-Python/blob/master/Chapter2/2_Return_Kth_To_Last.py)
 """
-from python.cracking_the_coding_interview.ch_02_linked_list.linked_list import LinkedList
+from python.cracking_the_coding_interview.linked_list import LinkedList
 
 
 def kth_to_last(ll, k):

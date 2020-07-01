@@ -13,7 +13,7 @@ Picture the list 1 => 5 => 9 =>12. Removing 9 would make it look like 1 => 5 =>1
 have access to the 9th node. Can you make it look like the correct answer?
 """
 
-from python.cracking_the_coding_interview.ch_02_linked_list.linked_list import LinkedList
+from python.cracking_the_coding_interview.linked_list import LinkedList
 
 
 def delete_middle_node(node):

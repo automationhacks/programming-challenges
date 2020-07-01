@@ -33,7 +33,7 @@ the sum method? What is the relationship between sum(1->5->9, 2->3->6->7) and su
 list might represent the 1000's place while the other represents the 1D's place. What if you made them the same
 length? Is there a way to modify the linked list to do that, without changing the value it represents?
 """
-from python.cracking_the_coding_interview.ch_02_linked_list.linked_list import LinkedList
+from python.cracking_the_coding_interview.linked_list import LinkedList
 
 
 def sum_list(first_ll, second_ll):

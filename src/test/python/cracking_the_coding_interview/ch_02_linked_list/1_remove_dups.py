@@ -11,7 +11,7 @@ one searches ahead of the first one.
 
 [Official solution](https://github.com/careercup/CtCI-6th-Edition-Python/blob/master/Chapter2/1_Remove_Dups.py)
 """
-from python.cracking_the_coding_interview.ch_02_linked_list.linked_list import LinkedList
+from python.cracking_the_coding_interview.linked_list import LinkedList
 
 
 def remove_dups(ll):

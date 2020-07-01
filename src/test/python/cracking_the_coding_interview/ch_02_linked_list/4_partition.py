@@ -20,7 +20,7 @@ cleaner code than others. Can you brainstorm different solutions?
 We only need to ensure that elements less than the pivot must be before elements greater than the pivot.
 Does that help you come up with more solutions?
 """
-from python.cracking_the_coding_interview.ch_02_linked_list.linked_list import LinkedList
+from python.cracking_the_coding_interview.linked_list import LinkedList
 
 
 def partition(ll, x):

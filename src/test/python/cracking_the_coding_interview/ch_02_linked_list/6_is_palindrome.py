@@ -16,7 +16,7 @@ Go back to the previous hint. Remember:There are ways to return multiple values.
 
 2 => 3 => 5 => 6 => 5 => 3 => 2
 """
-from python.cracking_the_coding_interview.ch_02_linked_list.linked_list import LinkedList
+from python.cracking_the_coding_interview.linked_list import LinkedList
 
 
 def is_palindrome(ll):
