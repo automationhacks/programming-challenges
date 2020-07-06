@@ -1,20 +1,4 @@
-class TreeNode:
-    def __init__(self, value, left=None, right=None):
-        self.value = value
-        self.left = left
-        self.right = right
-
-
-def create_minimum_bst(arr, start, end):
-    if start > end:
-        return ''
-
-    mid = (start + end) // 2
-    root = TreeNode(arr[mid])
-    root.left = create_minimum_bst(arr, start, mid - 1)
-    root.right = create_minimum_bst(arr, mid + 1, end)
-
-    return root
+from python.cracking_the_coding_interview.ch_04_trees_graphs.minimum_bst import create_minimum_bst
 
 
 def test_minimum_bst():
