@@ -27,3 +27,4 @@ build
 out
 .idea
 venv
+.pytest_cache/
