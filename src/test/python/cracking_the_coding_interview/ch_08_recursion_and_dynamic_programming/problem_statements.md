@@ -12,3 +12,14 @@ Hints: # 152, # 178, #217, #237, #262, #359
 - We multiply the values when it's "we do this then this:' We add them when it's "we do this or this:'
 - What is the runtime of this method? Think carefully. Can you optimize it?
 - Try memoization as a way to optimize an inefficient recursive program.
+
+## Robot in a grid 
+
+Imagine a robot sitting on the upper left corner of a grid with r rows and c columns. The robot can only move in two directions, right and down, but certain cells are "off limits" such that the robot cannot step on them. Design an algorithm to find a path for the robot from the top left to the bottom right.
+
+Hints: #331, #360, #388
+
+- For the robot to reach the last cell, it must find a path to the second-to-Last cells. For it to find a path to the second-to-Last cells, it must find a path to the third-to-Last cells.
+- Simplify this problem a bit by first figuring out if there's a path. Then, modify your algorithm to track the path.
+- Think again about the efficiency of your algorithm. Can you optimize it?
+
