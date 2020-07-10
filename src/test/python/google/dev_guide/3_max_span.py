@@ -17,6 +17,7 @@ Geek for Geeks: https://www.geeksforgeeks.org/maximum-distance-two-occurrences-e
 """
 
 
+# O(n^2)
 def max_span(arr):
     curr_max = 0
 
@@ -30,6 +31,9 @@ def max_span(arr):
     return curr_max
 
 
+# O(n)
+# Learning: Find a way to use a map/set to store some initial value and use that
+# for calculations, since that can reduce the runtime from n ^ 2 to possibly n
 def max_span_optimized(arr):
     # Store if we have seen the no before
     span_map = {}

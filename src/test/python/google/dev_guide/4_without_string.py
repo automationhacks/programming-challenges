@@ -60,6 +60,7 @@ def without_string_optimized(base, to_remove):
 def test_char_to_remove_in_base():
     assert without_string_optimized("Hello there", "llo") == "He there"
     assert without_string_optimized("Hello there", "e") == "Hllo thr"
+    assert without_string_optimized("Hello there", "ed") == "Hello there"
 
 
 def test_base_has_upper_case():
