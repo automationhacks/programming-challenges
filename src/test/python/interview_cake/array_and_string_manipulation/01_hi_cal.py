@@ -1,16 +1,20 @@
 """
- Your company built an in-house calendar tool called HiCal.
- You want to add a feature to see the times in a day when everyone is available.
+Problem source: Interview cake
+URL: https://www.interviewcake.com/question/python3/merging-ranges?course=fc1&section=array-and-string-manipulation
 
-To do this, you’ll need to know when any team is having a meeting. In HiCal, a meeting is stored as a tuple ↴
-of integers (start_time, end_time). These integers represent the number of 30-minute blocks past 9:00am.
+Your company built an in-house calendar tool called HiCal.
+You want to add a feature to see the times in a day when everyone is available.
+
+To do this, you’ll need to know when any team is having a meeting.
+In HiCal, a meeting is stored as a tuple of integers (start_time, end_time).
+These integers represent the number of 30-minute blocks past 9:00am.
 
 For example:
 
-  (2, 3)  # Meeting from 10:00 – 10:30 am
+(2, 3)  # Meeting from 10:00 – 10:30 am
 (6, 9)  # Meeting from 12:00 – 1:30 pm
 
-Write a function merge_ranges() that takes a list of multiple meeting time ranges and returns a list of condensed ranges.
+Write a function merge_ranges() that takes a list of multiple meeting time ranges and returns a list of condensed ranges
 
 For example, given:
 
@@ -24,8 +28,9 @@ Do not assume the meetings are in order. The meeting times are coming from multi
 
 Write a solution that's efficient even when we can't put a nice upper bound on the numbers representing our time ranges.
  Here we've simplified our times down to the number of 30-minute slots past 9:00 am. But we want the function to work
- even for very large numbers, like Unix timestamps. In any case, the spirit of the challenge is to merge meetings
- where start_time and end_time don't have an upper bound.
+ even for very large numbers, like Unix timestamps.
+
+In any case, the spirit of the challenge is to merge meetings where start_time and end_time don't have an upper bound.
 """
 
 import unittest
@@ -52,7 +57,6 @@ def merge_ranges(meetings):
 
 
 # Tests
-
 class Test(unittest.TestCase):
 
     def test_meetings_overlap(self):
@@ -101,23 +105,36 @@ unittest.main(verbosity=2)
 """
 Solution:
 
-First, we sort our input list of meetings by start time so any meetings that might need to be merged are now 
-next to each other.
+First, we sort our input list of meetings by start time so any meetings that might need to be merged are now next to 
+each other.
 
 Then we walk through our sorted meetings from left to right. At each step, either:
 
-    We can merge the current meeting with the previous one, so we do.
-    We can't merge the current meeting with the previous one, so we know the previous meeting can't be merged with 
-    any future meetings and we throw the current meeting into merged_meetings.
+- We can merge the current meeting with the previous one, so we do.
+- We can't merge the current meeting with the previous one, so we know the previous meeting can't be merged with any 
+future meetings and we throw the current meeting into merged_meetings.
 
 Complexity analysis:
 
-O(nlgn) time and O(n)) space.
+O(n log(n)) time and O(n)) space.
 
 Even though we only walk through our list of meetings once to merge them, we sort all the meetings first, 
-giving us a runtime of O(n log(n)). It's worth noting that if our input were sorted, 
-we could skip the sort and do this in O(n) time!
+giving us a runtime of O(n log(n)). It's worth noting that if our input were sorted, we could skip the sort and do 
+this in O(n) time!
 
-We create a new list of merged meeting times. In the worst case, none of the meetings overlap, 
-giving us a list identical to the input list. Thus we have a worst-case space cost of O(n). 
+We create a new list of merged meeting times. In the worst case, none of the meetings overlap, giving us a list 
+identical to the input list. Thus we have a worst-case space cost of O(n). 
+
+
+This one arguably uses a greedy approach as well, except this time we had to sort the list first.
+
+How did we figure that out?
+
+We started off trying to solve the problem in one pass, and we noticed that it wouldn't work. 
+We then noticed the reason it wouldn't work: to see if a given meeting can be merged, we have to look at all the 
+other meetings! That's because the order of the meetings is random.
+
+That's what got us thinking: what if the list were sorted? We saw that then a greedy approach would work. 
+We had to spend O(n log(n)) time on sorting the list, but it was better than our initial brute force approach, 
+which cost us O(n^2) time!
 """
