@@ -6,7 +6,7 @@ How would you solve this problem if a temporary buffer is not allowed? Hints: #9
 Hints:
 
 - Have you tried a hash table? You should be able to do this in a single pass of the linked list.
-- Without extra space, you'll need a(N2) time. Try using two pointers, where the second
+- Without extra space, you'll need a(N^2) time. Try using two pointers, where the second
 one searches ahead of the first one.
 
 [Official solution](https://github.com/careercup/CtCI-6th-Edition-Python/blob/master/Chapter2/1_Remove_Dups.py)

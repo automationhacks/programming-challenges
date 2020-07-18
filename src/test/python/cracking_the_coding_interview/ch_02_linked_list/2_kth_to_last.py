@@ -3,11 +3,14 @@
 
 Hints: #8, #25, #47, #67, # 726
 
-- What if you knew the linked list size? What is the difference between finding the Kth-to- last element and finding the Xth element?
+- What if you knew the linked list size? What is the difference between finding the Kth-to- last element
+and finding the Xth element?
 - If you don't know the linked list size, can you compute it? How does this impact the runtime?
 - Look at this graph. Is there any node you can identify that will definitely be okay to build first?
-- You might find it useful to return multiple values. Some languages don't directly support this, but there are workarounds in essentially any language. What are some of those workarounds?
-- We're probably going to run this algorithm many times. If we did more preprocessing, is there a way we could optimize this?
+- You might find it useful to return multiple values. Some languages don't directly support this,
+but there are workarounds in essentially any language. What are some of those workarounds?
+- We're probably going to run this algorithm many times.
+If we did more preprocessing, is there a way we could optimize this?
 
 [Official solution](https://github.com/careercup/CtCI-6th-Edition-Python/blob/master/Chapter2/2_Return_Kth_To_Last.py)
 """
@@ -45,7 +48,7 @@ def kth_to_last_runner(ll, k):
     runner: runs till kth position
     Once reached, both current and runner move till runner reaches the end
     We then can return the data at the current's position
-    then runner is increamen
+    then runner is incremented
     :param ll:
     :param k:
     :return:
