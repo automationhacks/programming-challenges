@@ -86,6 +86,3 @@ class Test(unittest.TestCase):
         reverse_words(message)
         expected = list('')
         self.assertEqual(message, expected)
-
-
-unittest.main(verbosity=2)

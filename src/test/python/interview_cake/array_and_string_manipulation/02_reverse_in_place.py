@@ -42,6 +42,3 @@ class Test(unittest.TestCase):
         reverse(list_of_chars)
         expected = ['E', 'D', 'C', 'B', 'A']
         self.assertEqual(list_of_chars, expected)
-
-
-unittest.main(verbosity=2)

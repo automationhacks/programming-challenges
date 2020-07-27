@@ -100,8 +100,6 @@ class Test(unittest.TestCase):
         self.assertEqual(actual, expected)
 
 
-unittest.main(verbosity=2)
-
 """
 Solution:
 
