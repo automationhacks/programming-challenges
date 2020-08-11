@@ -1,11 +1,14 @@
 import unittest
 
 """
-My cake shop is so popular, I'm adding some tables and hiring wait staff so folks can have a cute sit-down cake-eating experience.
+My cake shop is so popular, I'm adding some tables and hiring wait staff so folks can have a cute sit-down cake-eating 
+experience.
 
-I have two registers: one for take-out orders, and the other for the other folks eating inside the cafe. All the customer orders get combined into one list for the kitchen, where they should be handled first-come, first-served.
+I have two registers: one for take-out orders, and the other for the other folks eating inside the cafe. All the 
+customer orders get combined into one list for the kitchen, where they should be handled first-come, first-served.
 
-Recently, some customers have been complaining that people who placed orders after them are getting their food first. Yikes—that's not good for business!
+Recently, some customers have been complaining that people who placed orders after them are getting their food first. 
+Yikes—that's not good for business!
 
 To investigate their claims, one afternoon I sat behind the registers with my laptop and recorded:
 
@@ -13,7 +16,8 @@ To investigate their claims, one afternoon I sat behind the registers with my la
     The dine-in orders as they were entered into the system and given to the kitchen. (dine_in_orders)
     Each customer order (from either register) as it was finished by the kitchen. (served_orders)
 
-Given all three lists, write a function to check that my service is first-come, first-served. All food should come out in the same order customers requested it.
+Given all three lists, write a function to check that my service is first-come, first-served. All food should come out 
+in the same order customers requested it.
 
 We'll represent each customer order as a unique integer.
 
@@ -38,14 +42,19 @@ Note: Order numbers are arbitrary. They do not have to be in increasing order.
 
 """
  O(n) time and O(1) additional space. 
- We walk through served_orders, seeing if each customer order so far matches a customer order from one of the two registers. To check this, we:
+ We walk through served_orders, seeing if each customer order so far matches a customer order from one of the two 
+ registers. To check this, we:
 
     Keep pointers to the current index in take_out_orders, dine_in_orders, and served_orders.
     Walk through served_orders from beginning to end.
-    If the current order in served_orders is the same as the current customer order in take_out_orders, increment take_out_orders_index and keep going. This can be thought of as "checking off" the current customer order in take_out_orders and served_orders, reducing the problem to the remaining customer orders in the lists.
+    If the current order in served_orders is the same as the current customer order in take_out_orders, increment 
+    take_out_orders_index and keep going. This can be thought of as "checking off" the current customer order in 
+    take_out_orders and served_orders, reducing the problem to the remaining customer orders in the lists.
     Same as above with dine_in_orders.
-    If the current order isn't the same as the customer order at the front of take_out_orders or dine_in_orders, we know something's gone wrong and we're not serving food first-come, first-served.
-    If we make it all the way to the end of served_orders, we'll check that we've reached the end of take_out_orders and dine_in_orders. If every customer order checks out, that means we're serving food first-come, first-served.
+    If the current order isn't the same as the customer order at the front of take_out_orders or dine_in_orders, 
+    we know something's gone wrong and we're not serving food first-come, first-served.
+    If we make it all the way to the end of served_orders, we'll check that we've reached the end of take_out_orders 
+    and dine_in_orders. If every customer order checks out, that means we're serving food first-come, first-served.
 """
 
 

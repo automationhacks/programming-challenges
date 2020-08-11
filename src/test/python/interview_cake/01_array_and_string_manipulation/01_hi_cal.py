@@ -33,6 +33,43 @@ Write a solution that's efficient even when we can't put a nice upper bound on t
 In any case, the spirit of the challenge is to merge meetings where start_time and end_time don't have an upper bound.
 """
 
+"""
+Solution:
+
+First, we sort our input list of meetings by start time so any meetings that might need to be merged are now next to 
+each other.
+
+Then we walk through our sorted meetings from left to right. At each step, either:
+
+- We can merge the current meeting with the previous one, so we do.
+- We can't merge the current meeting with the previous one, so we know the previous meeting can't be merged with any 
+future meetings and we throw the current meeting into merged_meetings.
+
+Complexity analysis:
+
+O(n log(n)) time and O(n)) space.
+
+Even though we only walk through our list of meetings once to merge them, we sort all the meetings first, 
+giving us a runtime of O(n log(n)). It's worth noting that if our input were sorted, we could skip the sort and do 
+this in O(n) time!
+
+We create a new list of merged meeting times. In the worst case, none of the meetings overlap, giving us a list 
+identical to the input list. Thus we have a worst-case space cost of O(n). 
+
+
+This one arguably uses a greedy approach as well, except this time we had to sort the list first.
+
+How did we figure that out?
+
+We started off trying to solve the problem in one pass, and we noticed that it wouldn't work. 
+We then noticed the reason it wouldn't work: to see if a given meeting can be merged, we have to look at all the 
+other meetings! That's because the order of the meetings is random.
+
+That's what got us thinking: what if the list were sorted? We saw that then a greedy approach would work. 
+We had to spend O(n log(n)) time on sorting the list, but it was better than our initial brute force approach, 
+which cost us O(n^2) time!
+"""
+
 import unittest
 
 
@@ -98,41 +135,3 @@ class Test(unittest.TestCase):
         actual = merge_ranges([(0, 1), (3, 5), (4, 8), (10, 12), (9, 10)])
         expected = [(0, 1), (3, 8), (9, 12)]
         self.assertEqual(actual, expected)
-
-
-"""
-Solution:
-
-First, we sort our input list of meetings by start time so any meetings that might need to be merged are now next to 
-each other.
-
-Then we walk through our sorted meetings from left to right. At each step, either:
-
-- We can merge the current meeting with the previous one, so we do.
-- We can't merge the current meeting with the previous one, so we know the previous meeting can't be merged with any 
-future meetings and we throw the current meeting into merged_meetings.
-
-Complexity analysis:
-
-O(n log(n)) time and O(n)) space.
-
-Even though we only walk through our list of meetings once to merge them, we sort all the meetings first, 
-giving us a runtime of O(n log(n)). It's worth noting that if our input were sorted, we could skip the sort and do 
-this in O(n) time!
-
-We create a new list of merged meeting times. In the worst case, none of the meetings overlap, giving us a list 
-identical to the input list. Thus we have a worst-case space cost of O(n). 
-
-
-This one arguably uses a greedy approach as well, except this time we had to sort the list first.
-
-How did we figure that out?
-
-We started off trying to solve the problem in one pass, and we noticed that it wouldn't work. 
-We then noticed the reason it wouldn't work: to see if a given meeting can be merged, we have to look at all the 
-other meetings! That's because the order of the meetings is random.
-
-That's what got us thinking: what if the list were sorted? We saw that then a greedy approach would work. 
-We had to spend O(n log(n)) time on sorting the list, but it was better than our initial brute force approach, 
-which cost us O(n^2) time!
-"""
