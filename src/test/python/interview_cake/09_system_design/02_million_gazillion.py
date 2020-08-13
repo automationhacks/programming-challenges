@@ -110,3 +110,6 @@ class Test(unittest.TestCase):
         self.assertFalse(result, msg='empty word present')
 
         pprint(trie.root_node, indent=2)
+
+
+unittest.main(verbosity=2)
