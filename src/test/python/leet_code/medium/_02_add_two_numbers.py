@@ -31,69 +31,33 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        l1_copy = l1
-        l2_copy = l2
-
-        l1_length = 0
-        while l1.next:
-            l1_length += 1
-            l1 = l1.next
-
-        l2_length = 0
-        while l2.next:
-            l2_length += 1
-            l2 = l2.next
-
+    def addTwoNumbers(self, list1: ListNode, list2: ListNode) -> ListNode:
+        # Init result linked list and keep a pointer to the tail
         result = ListNode()
+        result_tail = result
 
-        # If both the nos are of equal length
-        if l1_length == l2_length:
-            previous_carry = 0
-            while l1.next and l2.next:
-                total = l1.val + l2.val + previous_carry
+        carry = 0
+        while list1 or list2 or carry:
+            # Assume defaults in case we run over one list (i.e. one list > the other list)
+            val1 = list1.val if list1 else 0
+            val2 = list2.val if list2 else 0
 
-                if total > 9:
-                    carry = total // 10
-                    remainder = total % 10
-                    result.val = remainder
-                    previous_carry = carry
-                else:
-                    result.val = total
+            total = val1 + val2 + carry
+            # Use divmod to get no % 10 and no // 10
+            carry, to_add = divmod(total, 10)
 
-                l1 = l1.next
-                l2 = l2.next
-        else:
-            if l1_length > l2_length:
-                bigger = l1
-                smaller = l2
-            else:
-                bigger = l2
-                smaller = l1
+            # Add new node to the tail of the linked list
+            result_tail.next = ListNode(to_add)
+            # Reset the tail
+            result_tail = result_tail.next
 
-            while bigger.next:
-                previous_carry = 0
+            # We might have run over and seen one list as None.
+            # None.next would be an exception and thus this block
+            # guards against that.
+            list1 = list1.next if list1 else None
+            list2 = list2.next if list2 else None
 
-                if smaller.next:
-                    total = bigger.val + smaller.val + previous_carry
-                else:
-                    total = bigger.val + previous_carry
-
-                if total > 9:
-                    carry = total // 10
-                    remainder = total % 10
-                    result.val = remainder
-                    previous_carry = carry
-                else:
-                    result.val = total
-
-                bigger = bigger.next
-                smaller = smaller.next
-
-        while result.next:
-            print(result.val)
-
-        return result
+        return result.next
 
 
 
