@@ -25,10 +25,12 @@ Constraints:
 
 """
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 class Solution:
     def addTwoNumbers(self, list1: ListNode, list2: ListNode) -> ListNode:
@@ -58,9 +60,3 @@ class Solution:
             list2 = list2.next if list2 else None
 
         return result.next
-
-
-
-
-
-

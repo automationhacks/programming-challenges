@@ -57,7 +57,7 @@ class Solution:
         # create a mapping of roman to int values
         # create a mapping of roman symbols to next symbols which can cause substraction
         # parse the roman str one char at a time and get the value and add to a final value
-        # Check if next symbol satisfies substraction rules and then do next - current value and skip 2 symbols
+        # Check if next symbol satisfies subtraction rules and then do next - current value and skip 2 symbols
         # return the final value
 
         roman_no_len = len(roman_no)
@@ -89,7 +89,7 @@ class Solution:
                 result += current_symbol_value
                 return result
 
-            # Check if current and next symbol satisfies substraction rules
+            # Check if current and next symbol satisfies subtraction rules
             next_symbol = roman_no[index + 1]
 
             if current_symbol in subtraction_rules.keys() and next_symbol in subtraction_rules[current_symbol]:
