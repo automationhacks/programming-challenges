@@ -25,6 +25,6 @@ hs_err_pid*
 .gradle
 build
 out
-.idea
+.idea/
 venv
 .pytest_cache/
