@@ -29,7 +29,9 @@ class ListNode:
         self.val = val
         self.next = next
 
-
+# Complexity:
+# Time: O(n + m) where n is size of l1 and m is size of l2
+# Space: O(1) we only keep couple of pointers during the logic and thus it should be constant
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         # Keep a pointer to the head
