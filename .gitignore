@@ -26,7 +26,7 @@ hs_err_pid*
 build
 out
 .idea/
-.vscode
+.vscode/
 venv
 .pytest_cache/
 .pyc
