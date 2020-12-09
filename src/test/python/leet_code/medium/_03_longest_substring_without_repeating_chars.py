@@ -24,77 +24,79 @@ Constraints:
     s consists of English letters, digits, symbols and spaces.
 """
 
-# Original attempt
 
-"""
+# class Solution:
+#     # Approach 1: Brute force
+#     # Get all possible substrings by enumerating the string with two loops
+#     # Run every substring through an allUnique method which checks if it has
+#     # duplicate chars using set
+#     # Complexity:
+#     # Time: O(n ^ 3)
+#     #   Outer loop runs once for every ch
+#     #   Inner loop runs for outer until end
+#     #   allUnique func runs for the length of the substring
+#     # Space: min(n, m)
+#     #   n is the string and m is the substring, where upper bound is
+#
+#     def lengthOfLongestSubstring(self, string: str) -> int:
+#         length = len(string)
+#
+#         if length == 0:
+#             return 0
+#
+#         ans = 0
+#
+#         for start in range(0, length - 1):
+#             for end in range(start + 1, length):
+#                 is_unique = self.allUnique(string, start, end)
+#                 if is_unique:
+#                     ans = max(ans, end - start)
+#
+#         return ans
+#
+#     def allUnique(self, string, start, end):
+#         unique_chars = set()
+#
+#         for char_index in range(start, end):
+#             character = string[char_index]
+#             if character in unique_chars:
+#                 return False
+#             else:
+#                 unique_chars.add(character)
+#
+#         return True
+
+
 class Solution:
+    # Back to our problem. We use HashSet to store the characters in current window [i,j) j == i initially).
+    # Then we slide the index j to the right. If it is not in the HashSet, we slide
+    # j further. Doing so until s[j] is already in the HashSet. At this point, we found the maximum size
+    # of substrings without duplicate characters start with index i. If we do this for all i, we get
+    # our answer.
+
+    # Time: O(2n) worst case aaaaaaaaaa, each char would be visited twice by start and end
+    # Space: O(min(m, n)), need O(k) space for sliding window, k = size of set, k is upper
+    # bounded by size of string n and size of  charset/alphabet m
+
     def lengthOfLongestSubstring(self, string: str) -> int:
-        if string == "":
-            return 0
-        
-        max_len = 1 
-        str_len = len(string)
-        
-        for index, char in enumerate(string):
-           seen = set([char])
-        
-           for next_char_index in range(index + 1, str_len): # index error at end
-                next_char = string[next_char_index]
-                
-                if next_char in seen:
-                    length =  len(seen)
-                    if length > max_len:
-                        max_len = length
-                    break
-                else:
-                    seen.add(next_char)
-                    
-                    if next_char_index == str_len - 1 and len(seen) > max_len:
-                        max_len = len(seen)
-                    
-        return max_len
-"""
-
-class Solution:
-    # Approach 1: Brute force
-    # Get all possible substrings by enumerating the string with two loops
-    # Run every substring through an allUnique method which checks if it has
-    # duplicate chars using set
-    # Complexity:
-    # Time: O(n ^ 3)
-    #   Outer loop runs once for every ch
-    #   Inner loop runs for outer until end
-    #   allUnique func runs for the length of the substring
-    # Space: min(n, m)
-    #   n is the string and m is the substring, where upper bound is
-
-    def lengthOfLongestSubstring_BruteForce(self, string: str) -> int:
         length = len(string)
+        chars = set()
+        ans, start, end = 0, 0, 0
 
-        if length == 0:
-            return 0
-
-        ans = 0
-
-        for start in range(0, length - 1):
-            for end in range(start + 1, length):
-                is_unique = self.allUnique(string, start, end)
-                if is_unique:
-                    ans = max(ans, end - start)
+        while start < length and end < length:
+            end_char = string[end]
+            if end_char not in chars:
+                chars.add(end_char)
+                end += 1
+                ans = max(ans, end - start)
+            # if char at end is already present in the set
+            # remove char at the start and repeat for all chars in string
+            else:
+                beginning_char = string[start]
+                chars.remove(beginning_char)
+                start += 1
 
         return ans
-
-    def allUnique(self, string, i, j):
-        unique_chars = set()
-
-        for ch_idx in range(i, j):
-            character = string[ch_idx]
-            if character in unique_chars:
-                return False
-            else:
-                unique_chars.add(character)
-
-        return True
 
 
 def test_long_string_with_repeating_chars():
