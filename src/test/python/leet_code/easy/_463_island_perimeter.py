@@ -47,7 +47,7 @@ class Solution:
     # Approach:
     # Simple counting
     # Iterate in the matrix and if you get a land cell, check its neighbours
-    # Every cell can have max perimeter of 4 and we substract the left, right, up, down cells (which can only have 1)
+    # Every cell can have max perimeter of 4 and we subtract the left, right, up, down cells (which can only have 1)
     # while considering the first row, last row, first col and last col as edges wherein we set left, right, up,
     # down as 0 since there is nothing beyond that on the map
     def islandPerimeter(self, grid: List[List[int]]) -> int:
